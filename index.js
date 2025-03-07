@@ -110,8 +110,22 @@ console.log("Session downloaded ✅")
   console.log('𝙿𝚕𝚞𝚐𝚒𝚗𝚜 𝚒𝚗𝚜𝚝𝚊𝚕𝚕𝚎𝚍 𝚜𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕 ✅')
   console.log('𝙱𝚘𝚝 𝚌𝚘𝚗𝚗𝚎𝚌𝚝𝚎𝚍 𝚝𝚘 𝚠𝚑𝚊𝚝𝚜𝚊𝚙𝚙 ✅')
   
-  let up = `*Hello there ✦RHODVICKEZ MD✦ User! \ud83d\udc4b\ud83c\udffb* \n\n> This is auser friendly whatsapp bot created by Rhodvick Tech Inc \ud83c\udf8a, Meet ✦RHODVICKEZ MD✦ WhatsApp Bot.\n\n *Thanks for using ✦RHODVICKEZ MD✦ \ud83d\udea9* \n\n> follow WhatsApp Channel :- 💖\n \nhttps://whatsapp.com/channel/0029VabySTR9Bb5upWFhMv1N\n\n- *YOUR PREFIX:* = ${prefix}\n\nDont forget to give star to repo ⬇️\n\nhttps://github.com/Rhodvick/RHODVICKEZ-MD\n\n> © Powered BY ✦RHODVICKEZ MD✦ \ud83d\udda4`;
-  conn.sendMessage(conn.user.id, { image: { url: `https://i.ibb.co/wJBxKV4/74421a3c5d94ac0a.jpg` }, caption: up })
+  let up = `*Hᴇʟʟᴏ ᴛʜᴇʀᴇ ᴍᴀʟᴠɪɴ ᴠ².³.
+  ¹ Usᴇʀ! 👋🏻* 
+
+*ᴋᴇᴇᴘ ᴏɴ ᴜsɪɴɢ ᴍᴀʟᴠɪɴ ᴍᴏᴅs🚩* 
+
+> Join WhatsApp Channel: ⤵️  
+https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
+
+- *ʏᴏᴜʀ ʙᴏᴛ ᴘʀᴇғɪx: ➡️[ ${prefix} ] *
+
+Don't forget to give a star to the repo ⬇️ 
+ 
+↪️https://github.com/kingmalvn/MALVIN-XD
+
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ  🌀 ᴍᴀʟᴠɪɴ ᴋɪɴɢ ᴛᴇᴄʜ 🌀`;
+  conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/gld2vo.jpg` }, caption: up })
   }
   })
 
