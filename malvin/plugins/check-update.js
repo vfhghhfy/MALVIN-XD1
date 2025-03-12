@@ -3,7 +3,7 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const { cmd, commands } = require('../command');
-const { runtime } = require('../lib/functions');
+const { runtime } = require('../../lib/functions');
 
 cmd({
   pattern: 'version',
