@@ -50,17 +50,17 @@ async (conn, mek, m, { from, reply, q, text, isCreator, fromMe }) => {
             case 'status':
                 const currentDmStatus = await getAnti('dm');
                 const currentGcStatus = await getAnti('gc');
-                return reply(`⛔️_AntiDelete Status_⛔️\n\n*DM AntiDelete:* ${currentDmStatus ? 'Enabled' : 'Disabled'}\n*Group Chat AntiDelete:* ${currentGcStatus ? 'Enabled' : 'Disabled'}`);
+                return reply(`_AntiDelete Status_\n\n*DM AntiDelete:* ${currentDmStatus ? 'Enabled' : 'Disabled'}\n*Group Chat AntiDelete:* ${currentGcStatus ? 'Enabled' : 'Disabled'}`);
 
             default:
-                const helpMessage = `-- *AntiDelete Command Guide: --*
-                • \`\`.antidelete on\`\` - Reset AntiDelete for all chats (disabled by default)
-                • \`\`.antidelete off gc\`\` - Disable AntiDelete for Group Chats
-                • \`\`.antidelete off dm\`\` - Disable AntiDelete for Direct Messages
-                • \`\`.antidelete set gc\`\` - Toggle AntiDelete for Group Chats
-                • \`\`.antidelete set dm\`\` - Toggle AntiDelete for Direct Messages
-                • \`\`.antidelete set all\`\` - Enable AntiDelete for all chats
-                • \`\`.antidelete status\`\` - Check current AntiDelete status`;
+                const helpMessage = `❒ *ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴄᴏᴍᴍᴀɴᴅ ɢᴜɪᴅᴇ ❒*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴏɴ* - _*ʀᴇꜱᴇᴛ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ᴀʟʟ ᴄʜᴀᴛꜱ (ᴅɪꜱᴀʙʟᴇᴅ ʙʏ ᴅᴇꜰᴀᴜʟᴛ)*_
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴏꜰꜰ ɢᴄ* - *_ᴅɪꜱᴀʙʟᴇ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛꜱ_*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴏꜰꜰ ᴅᴍ* - *_ᴅɪꜱᴀʙʟᴇ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ᴅɪʀᴇᴄᴛ ᴍᴇꜱꜱᴀɢᴇꜱ_*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜱᴇᴛ ɢᴄ*- *_ᴛᴏɢɢʟᴇ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛꜱ_*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜱᴇᴛ ᴅᴍ*- *_ᴛᴏɢɢʟᴇ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ᴅɪʀᴇᴄᴛ ᴍᴇꜱꜱᴀɢᴇꜱ_*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜱᴇᴛ ᴀʟʟ* - *_ᴇɴᴀʙʟᴇ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜰᴏʀ ᴀʟʟ ᴄʜᴀᴛꜱ_*
+                *• .ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜱᴛᴀᴛᴜꜱ* - *_ᴄʜᴇᴄᴋ ᴄᴜʀʀᴇɴᴛ ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ꜱᴛᴀᴛᴜꜱ_*`;
 
                 return reply(helpMessage);
         }
@@ -69,6 +69,3 @@ async (conn, mek, m, { from, reply, q, text, isCreator, fromMe }) => {
         return reply("An error occurred while processing your request.");
     }
 });
-
-
-// if you want use the codes give me credit on your channel and repo in this file and my all files 

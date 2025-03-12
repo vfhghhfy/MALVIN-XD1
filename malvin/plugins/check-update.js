@@ -1,11 +1,9 @@
-
-
 const axios = require('axios');
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const { cmd, commands } = require('../command');
-const { runtime } = require('../../lib/functions');
+const { runtime } = require('../lib/functions');
 
 cmd({
   pattern: 'version',
@@ -19,7 +17,7 @@ cmd({
 }) => {
   try {
     // Read local version data
-    const localVersionPath = path.join(__dirname, '.../../DATABASE/version.json');
+    const localVersionPath = path.join(__dirname, '../data/version.json');
     let localVersion = 'Unknown';
     let changelog = 'No changelog available.';
     if (fs.existsSync(localVersionPath)) {
@@ -29,7 +27,7 @@ cmd({
     }
 
     // Fetch latest version data from GitHub
-    const rawVersionUrl = 'https://raw.githubusercontent.com/kingmalvn/MALVIN-XD/main/DATABASE/version.json';
+    const rawVersionUrl = 'https://raw.githubusercontent.com/misbha37/SHABAN-MD/main/data/version.json';
     let latestVersion = 'Unknown';
     let latestChangelog = 'No changelog available.';
     try {
@@ -54,36 +52,39 @@ cmd({
     const hostName = os.hostname();
     const lastUpdate = fs.statSync(localVersionPath).mtime.toLocaleString();
 
+    // Bot active since
+    const botActiveSince = global.botStartTime.toLocaleString();
+
     // GitHub stats
-    const githubRepo = 'https://github.com/kingmalvin/MALVIN-XD';
+    const githubRepo = 'https://github.com/MRSHABAN40/SHABAN-MD-V5';
 
     // Check update status
-    let updateMessage = `*✅ 𝖸𝖮𝖴 𝖬𝖠𝖫𝖵𝖨𝖭 𝖷𝖣 𝖡𝖮𝖳 𝖨𝖲 𝖴𝖯-𝖳𝖮-𝖣𝖠𝖳𝖤!*`;
+    let updateMessage = `✅ Your SHABAN-MD bot is up-to-date!`;
     if (localVersion !== latestVersion) {
-      updateMessage = `*😵‍💫 𝖸𝖮𝖴𝖱 𝖬𝖠𝖫𝖵𝖨𝖭-𝖷𝖣 𝖨𝖲 𝖮𝖴𝖳𝖣𝖠𝖳𝖤𝖣*
-🔹 *ᴄᴜʀʀᴇɴᴛ ᴠᴇʀsɪᴏɴ:* ${localVersion}
-🔸 *ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ:* ${latestVersion}
+      updateMessage = `🚀 Your SHABAN-MD bot is outdated!
+🔹 *Current Version:* ${localVersion}
+🔹 *Latest Version:* ${latestVersion}
 
-*ᴜsᴇ .ᴜᴘᴅᴀᴛᴇ ᴛᴏ ᴜᴘᴅᴀᴛᴇ.*`;
+Use *.update* to update.`;
     }
 
-    const statusMessage = `🌟 *Good ${new Date().getHours() < 12 ? 'Morning' : 'Night'}, ${pushname}!* 🌟\n\n` +
-      `🤖 *ʙᴏᴛ ɴᴀᴍᴇ:* 𝖬𝖠𝖫𝖵𝖨𝖭-𝖷𝖣\n🔖 *ᴄᴜʀʀᴇɴᴛ ᴠᴇʀsɪᴏɴ:* ${localVersion}\n📢 *ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ:* ${latestVersion}\n📂 *ᴛᴏᴛᴀʟ ᴘʟᴜɢɪɴs:* ${pluginCount}\n🔢 *ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs:* ${totalCommands}\n\n` +
-      `💾 *sʏsᴛᴇᴍ ɪɴғᴏ:*\n⏰ *ᴜᴘᴛɪᴍᴇ:* ${uptime}\n📟 *ʀᴀᴍ ᴜsᴀɢᴇ:* ${ramUsage}MB / ${totalRam}MB\n⚙️ *ʜᴏsᴛ ɴᴀᴍᴇ:* ${hostName}\n📅 *ʟᴀsᴛ ᴜᴘᴅᴀᴛᴇ:* ${lastUpdate}\n\n` +
-      `📑 *ᴄʜᴀɴɢᴇʟᴏɢ:*\n${latestChangelog}\n\n` +
-      `⭐ *ɢɪᴛʜᴜʙ ʀᴇᴘᴏ:* https://github.com/kingmalvn/MALVIN-XD\n👤 *Owner:* [Malvin King](https://github.com/kingmalvn)\n\n${updateMessage}\n\n🚀 *ʜᴇʏ! ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ғᴏʀᴋ & sᴛᴀʀ ᴛʜᴇ ʀᴇᴘᴏ!*`;
+    const statusMessage = `*Good ${new Date().getHours() < 12 ? 'Morning' : 'Night'}, ${pushname}!* 🌟\n\n` +
+      `📌 *Bot Name:* SHABAN-MD\n🔖 *Current Version:* ${localVersion}\n📢 *Latest Version:* ${latestVersion}\n📂 *Total Plugins:* ${pluginCount}\n🔢 *Total Commands:* ${totalCommands}\n\n` +
+      `💾 *System Info:*\n⏳ *Uptime:* ${uptime}\n📟 *RAM Usage:* ${ramUsage}MB / ${totalRam}MB\n⚙️ *Host Name:* ${hostName}\n📅 *Last Update:* ${lastUpdate}\n🕒 *Bot Active Since:* ${botActiveSince}\n\n` +
+      `📝 *Changelog:*\n${latestChangelog}\n\n` +
+      `⭐ *GitHub Repo:* ${githubRepo}\n👤 *Owner:* [MR-SHABAN](https://github.com/MRSHABAN40)\n\n${updateMessage}\n\n🚀 *Hey! Don't forget to fork & star the repo!*`;
 
     // Send the status message with an image
     await conn.sendMessage(from, {
-      image: { url: 'https://files.catbox.moe/gld2vo.jpg' },
+      image: { url: 'https://i.ibb.co/5hqbNSfH/shaban-md.jpg' },
       caption: statusMessage,
       contextInfo: {
         mentionedJid: [m.sender],
         forwardingScore: 999,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363306168354073@newsletter',
-          newsletterName: ' 𝖷𝐃 𝐕𝐄𝐑𝐒𝐈𝐎𝐍',
+          newsletterJid: '120363358310754973@newsletter',
+          newsletterName: 'SʜᴀʙᴀɴMᴅ',
           serverMessageId: 143
         }
       }

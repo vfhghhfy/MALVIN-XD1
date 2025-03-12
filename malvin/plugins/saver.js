@@ -1,52 +1,54 @@
-//CODING BY Malvin king🫅🏻
-const config = require('../../settings');
-const { cmd, commands } = require('../command');
-const fs = require('fs');
-const path = require('path');
+
+
+
+
+const { cmd, commands } = require("../command");
+const path = require("path");
 
 cmd({
-    pattern: "save",
-    react: "📁",
-    alias: ["store"],
-    desc: "Save and send back a media file (image, video, or audio).",
-    category: "media",
-    use: ".save <caption>",
-    filename: __filename,
-},
-async (conn, mek, m, { quoted, q, reply }) => {
-    try {
-        if (!quoted) {
-            return reply("❌ Reply to a media message (video, image, or audio) with the `.save` command.");
-        }
-
-        const messageType = quoted.mtype;
-        let mediaType;
-
-        // Determine the type of media
-        if (/video/.test(messageType)) {
-            mediaType = "video";
-        } else if (/image/.test(messageType)) {
-            mediaType = "image";
-        } else if (/audio/.test(messageType)) {
-            mediaType = "audio";
-        } else {
-            return reply("❌ Only video, image, or audio messages are supported.");
-        }
-
-        // Download and save the media file
-        const mediaPath = await conn.downloadAndSaveMediaMessage(quoted);
-        const filePath = path.resolve(mediaPath);
-
-        // Send the saved media back
-        const mediaMessage = {
-            caption: q || '',
-        };
-        mediaMessage[mediaType] = { url: `file://${filePath}` };
-
-        await conn.sendMessage(m.sender, mediaMessage, { quoted: mek });
-        await reply("✅ Successfully saved and sent the media file.");
-    } catch (error) {
-        console.error(error);
-        reply("❌ Failed to save and send the media. Please try again.");
+  pattern: "save",
+  react: "📁",
+  alias: ["store"],
+  desc: "Save and send back a media file (image, video, or audio).",
+  category: "media",
+  use: ".save <caption>",
+  filename: __filename,
+}, async (bot, message, chat, { quoted, q, reply }) => {
+  try {
+    // Vérifier si un message multimédia est cité
+    if (!quoted) {
+      return reply("❌ Reply to a media message (video, image, or audio) with the `.save` command.");
     }
+
+    const mimeType = quoted.mtype || quoted.mediaType; // Mieux gérer les types MIME
+    let mediaType;
+
+    // Identifier le type de fichier multimédia
+    if (mimeType.includes("video")) {
+      mediaType = "video";
+    } else if (mimeType.includes("image")) {
+      mediaType = "image";
+    } else if (mimeType.includes("audio")) {
+      mediaType = "audio";
+    } else {
+      return reply("❌ Only video, image, or audio messages are supported.");
+    }
+
+    // Télécharger et sauvegarder le fichier multimédia
+    const savedFilePath = await bot.downloadAndSaveMediaMessage(quoted);
+    const resolvedFilePath = path.resolve(savedFilePath);
+
+    // Préparer l'objet de réponse
+    const mediaMessage = {
+      caption: q || "",
+    };
+    mediaMessage[mediaType] = { url: "file://" + resolvedFilePath };
+
+    // Envoyer le fichier au contact
+    await bot.sendMessage(chat.sender, mediaMessage, { quoted: message });
+    await reply("✅ Successfully saved and sent the media file.");
+  } catch (error) {
+    console.error(error);
+    reply("❌ Failed to save and send the media. Please try again.");
+  }
 });
