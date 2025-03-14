@@ -124,7 +124,7 @@ cmd({
 // MediaFire-dl
 
 cmd({
-  pattern: "mediafire",
+  pattern: "mediafire2",
   alias: ["mfire"],
   desc: "To download MediaFire files.",
   react: "🎥",
@@ -239,7 +239,7 @@ cmd({
 // G-Drive-DL
 
 cmd({
-  pattern: "gdrive",
+  pattern: "gdrive2",
   desc: "Download Google Drive files.",
   react: "🌐",
   category: "download",
