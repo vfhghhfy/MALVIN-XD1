@@ -41,6 +41,10 @@ const {
   const Crypto = require('crypto')
   const path = require('path')
   const prefix = config.PREFIX
+  const mode = config.MODE
+  const autoreact = config.AUTO_REACT
+  const statuslike = config.AUTO_STATUS_REACT
+  const statusview = config.AUTO_READ_STATUS
   
   const ownerNumber = ['263780934873']
   
@@ -118,11 +122,19 @@ console.log("Session downloaded ✅")
 > Join WhatsApp Channel: ⤵️  
 https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
 
-- *ʏᴏᴜʀ ʙᴏᴛ ᴘʀᴇғɪx: ➡️[ ${prefix} ] *
+   *[ • ᴍᴀʟᴠɪɴ xᴅ - ᴄᴏɴɴᴇᴄᴛᴇᴅ‎ • ]*
+*╭┈───────────────•*
+*│ ◦* *ᴘʀᴇғɪx* : [${prefix}]
+*│ ◦* *ᴍᴏᴅᴇ* : [${mode}]
+*│ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ᴠɪᴇᴡ* : [${statusview}]
+*│ ◦* *ᴀᴜᴛᴏ_ʀᴇᴀᴄᴛ* : [${autoreact}]
+*│ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ʟɪᴋᴇ* : [${statuslike}]
+*╰┈───────────────•*
 
-Don't forget to give a star to the repo ⬇️ 
- 
-↪️https://github.com/kingmalvn/MALVIN-XD
+> ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ sᴛᴀʀ & ғᴏʀᴋ ᴛʜᴇ ʀᴇᴘᴏ🌟🍴
+
+┊ ʀᴇᴘᴏ ʟɪɴᴋ: https://github.com/kingmalvn/MALVIN-XD 
+╰───────────────━⊷
 
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ  🌀 ᴍᴀʟᴠɪɴ ᴋɪɴɢ ᴛᴇᴄʜ 🌀`;
   conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/gld2vo.jpg` }, caption: up })
