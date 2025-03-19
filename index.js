@@ -24,15 +24,15 @@ const {
   
   const l = console.log
   const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
-  const { AntiDelDB, initializeAntiDeleteSettings, setAnti, getAnti, getAllAntiDeleteSettings, saveContact, loadMessage, getName, getChatSummary, saveGroupMetadata, getGroupMetadata, saveMessageCount, getInactiveGroupMembers, getGroupMembersMessageCount, saveMessage } = require('./malvin/data')
+  const { AntiDelDB, initializeAntiDeleteSettings, setAnti, getAnti, getAllAntiDeleteSettings, saveContact, loadMessage, getName, getChatSummary, saveGroupMetadata, getGroupMetadata, saveMessageCount, getInactiveGroupMembers, getGroupMembersMessageCount, saveMessage } = require('./data')
   const fs = require('fs')
   const ff = require('fluent-ffmpeg')
   const P = require('pino')
-  const config = require('./settings')
+  const config = require('./config')
   const qrcode = require('qrcode-terminal')
   const StickersTypes = require('wa-sticker-formatter')
   const util = require('util')
-  const { sms, downloadMediaMessage, AntiDelete } = require('./lib/msg')
+  const { sms, downloadMediaMessage, AntiDelete } = require('./lib')
   const FileType = require('file-type');
   const axios = require('axios')
   const { File } = require('megajs')
@@ -43,8 +43,8 @@ const {
   const path = require('path')
   const prefix = config.PREFIX
   const mode = config.MODE
-  const status = config.AUTO_STATUS_SEEN
-  const statuslike = config.AUTO_STATUS_REACT
+  const status = config.AUTO_STATUS_SEEN 
+  const statuslike = config.AUTO_STATUS_LIKE 
   
   const ownerNumber = ['263780934873']
   
@@ -68,14 +68,14 @@ const {
   setInterval(clearTempDir, 5 * 60 * 1000);
   
   //===================SESSION-AUTH============================
-if (!fs.existsSync(__dirname + '/malvin/sessions/creds.json')) {
+if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
 if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
 const sessdata = config.SESSION_ID.replace("MALVIN-XD~", '');
 const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
-fs.writeFile(__dirname + '/malvin/sessions/creds.json', data, () => {
-console.log("Session downloaded ✅")
+fs.writeFile(__dirname + '/sessions/creds.json', data, () => {
+console.log("[❄️]Session downloaded ✅")
 })})}
 
 const express = require("express");
@@ -85,8 +85,8 @@ const port = process.env.PORT || 9090;
   //=============================================
   
   async function connectToWA() {
-  console.log("Connecting to WhatsApp ⏳️...");
-  const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/malvin/sessions/')
+  console.log("[❄] ᏟϴΝΝᎬᏟͲᏆΝᏀ Ͳϴ ᏔᎻᎪͲՏᎪᏢᏢ ⏳️...");
+  const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/sessions/')
   var { version } = await fetchLatestBaileysVersion()
   
   const conn = makeWASocket({
@@ -105,19 +105,17 @@ const port = process.env.PORT || 9090;
   connectToWA()
   }
   } else if (connection === 'open') {
-  console.log('🧬 Installing Plugins')
+  console.log('[❄] 🧬 ᏆΝՏͲᎪᏞᏞᏆΝᏀ ᏢᏞႮᏀᏆΝՏ')
   const path = require('path');
-  fs.readdirSync("./malvin/plugins/").forEach((plugin) => {
+  fs.readdirSync("./plugins/").forEach((plugin) => {
   if (path.extname(plugin).toLowerCase() == ".js") {
-  require("./malvin/plugins/" + plugin);
+  require("./plugins/" + plugin);
   }
   });
-  console.log('Plugins installed successful ✅')
-  console.log('Bot connected to whatsapp ✅')
+  console.log('[❄] ᏢᏞႮᏀᏆΝՏ ᏆΝՏͲᎪᏞᏞᎬᎠ ՏႮᏟᏟᎬՏՏҒႮᏞ  ✅')
+  console.log('[❄] ᎷᎪᏞᏙᏆΝ-ХᎠ ᏟϴΝΝᎬᏟͲᎬᎠ Ͳϴ ᏔᎻᎪͲՏᎪᏢᏢ ✅')
   
   let up = `*
-    Hᴇʟʟᴏ ᴛʜᴇʀᴇ ᴍᴀʟᴠɪɴ ᴠ².⁵.⁰ Usᴇʀ! 👋🏻* 
-
 *ᴋᴇᴇᴘ ᴏɴ ᴜsɪɴɢ ᴍᴀʟᴠɪɴ ᴍᴏᴅs🚩* 
 
 > Join WhatsApp Channel: ⤵️  
@@ -125,10 +123,10 @@ https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
 
    *[ • ᴍᴀʟᴠɪɴ xᴅ - ᴄᴏɴɴᴇᴄᴛᴇᴅ‎ • ]*
 *╭┈───────────────•*
-*│ ◦* *ᴘʀᴇғɪx* : [${prefix}]
-*│ ◦* *ᴍᴏᴅᴇ* : [${mode}]
-*│ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ᴠɪᴇᴡ* : [${status}]
-*│ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ʟɪᴋᴇ* : [${statuslike}]
+*┊ ◦* *ᴘʀᴇғɪx* : [${prefix}]
+*┊ ◦* *ᴍᴏᴅᴇ* : [${mode}]
+*┊ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ᴠɪᴇᴡ* : [${status}]
+*┊ ◦* *ᴀᴜᴛᴏ_sᴛᴀᴛᴜs_ʟɪᴋᴇ* : [${statuslike}]
 *╰┈───────────────•*
 
 > ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ sᴛᴀʀ & ғᴏʀᴋ ᴛʜᴇ ʀᴇᴘᴏ🌟🍴
@@ -137,7 +135,7 @@ https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
 ╰───────────────━⊷
 
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ  🌀 ᴍᴀʟᴠɪɴ ᴋɪɴɢ ᴛᴇᴄʜ 🌀`;
-  conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/gld2vo.jpg` }, caption: up })
+  conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/2prjby.jpg` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)
@@ -174,7 +172,7 @@ https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
     }
   if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_REACT === "true"){
     const malvinlike = await conn.decodeJid(conn.user.id);
-    const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '👀', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🫀', '🧡', '😁', '😄', '🌸', '🕊️', '🌷', '⛅', '🌟', '🗿', '🇵🇰', '💜', '💙', '🌝', '🖤', '🎎', '🎏', '🎐', '⚽', '🧣', '🌿', '⛈️', '🌦️', '🌚', '🌝', '🙈', '🙉', '🦖', '🐤', '🎗️', '🥇', '👾', '🔫', '🐝', '🦋', '🍓', '🍫', '🍭', '🧁', '🧃', '🍿', '🍻', '🎀', '🧸', '👑', '〽️', '😳', '💀', '☠️', '👻', '🔥', '♥️', '👀', '🐼'];
+    const emojis = ['❤️', '💸', '😇', '🍂', '💥', '💯', '🔥', '💫', '💎', '💗', '🤍', '🖤', '👀', '🙌', '🙆', '🚩', '🥰', '💐', '😎', '🤎', '✅', '🫀', '🧡', '😁', '😄', '🌸', '🕊️', '🌷', '⛅', '🌟', '🗿', '🇵🇰', '💜', '💙', '🌝', '🖤', '💚'];
     const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
     await conn.sendMessage(mek.key.remoteJid, {
       react: {
@@ -222,8 +220,8 @@ https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
   conn.sendMessage(from, { text: teks }, { quoted: mek })
   }
   const udp = botNumber.split('@')[0];
-    const mal = ('263780934873');
-    let isCreator = [udp, mal, config.DEV]
+    const malvin = ('263780934873', '263780166288', '263714757857');
+    let isCreator = [udp, malvin, config.DEV]
 					.map(v => v.replace(/[^0-9]/g) + '@s.whatsapp.net')
 					.includes(mek.sender);
 
@@ -268,34 +266,11 @@ https://whatsapp.com/channel/0029Vac8SosLY6d7CAFndv3Z
 					return;
 				}
  //================ownerreact==============
-    if(senderNumber.includes("263780934873")){
+    
+  if(senderNumber.includes("263780934873")){
   if(isReact) return
-  m.react("🪾")
-    }
-if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🫩")
-	  }
-	  if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🫆")
-	  }
-	  if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🫜")
-	  }
-	  if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🪉")
-	  }
-	  if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🪏")
-	  }
-	  if(senderNumber.includes("263780934873")){
-  if(isReact) return
-  m.react("🫟")
-	  }
+  m.react("🦋")
+   }
   //==========public react============//
   // Auto React 
   if (!isReact && senderNumber !== botNumber) {
@@ -335,27 +310,7 @@ if (!isReact && senderNumber === botNumber) {
         m.react(randomReaction);
     }
 } 
-
-//============================HRTPACK============================       
-        //=======HRT React 
-if (!isReact && senderNumber !== botNumber) {
-    if (config.HEART_REACT === 'true') {
-            const reactions = ['💘', '💝', '💖', '💗', '💓', '💞', '💕', '❣️', '❤️‍🔥', '❤️‍🩹', '❤️', '🩷', '🧡', '💛', '💚', '💙', '🩵', '💜', '🤎', '🖤', '🩶', '🤍'];
-           const randomReaction = reactions[Math.floor(Math.random() * reactions.length)]; // 
-        m.react(randomReaction);
-    }
-}
-
-   //=======HRT React 
-if (!isReact && senderNumber === botNumber) {
-    if (config.HEART_REACT === 'true') {
-            const reactions = ['💘', '💝', '💖', '💗', '💓', '💞', '💕', '❣️', '❤️‍🔥', '❤️‍🩹', '❤️', '🩷', '🧡', '💛', '💚', '💙', '🩵', '💜', '🤎', '🖤', '🩶', '🤍'];
-           const randomReaction = reactions[Math.floor(Math.random() * reactions.length)]; // 
-        m.react(randomReaction);
-    }
-}        
-
-     
+        
   //==========WORKTYPE============ 
   if(!isOwner && config.MODE === "private") return
   if(!isOwner && isGroup && config.MODE === "inbox") return
@@ -363,7 +318,7 @@ if (!isReact && senderNumber === botNumber) {
    
   // take commands 
                  
-  const events = require('./malvin/command')
+  const events = require('./command')
   const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
   if (isCmd) {
   const cmd = events.commands.find((cmd) => cmd.pattern === (cmdName)) || events.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName))
@@ -834,10 +789,19 @@ if (!isReact && senderNumber === botNumber) {
     conn.serializeM = mek => sms(conn, mek, store);
   }
   
+  /*
   app.get("/", (req, res) => {
-  res.send("MALVIN-XD STARTED ✅");
+  res.send("[🤖] MALVIN XD BOT ONLINE ✅");
   });
-  app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
+  */
+app.use(express.static(path.join(__dirname, 'lib')));
+
+app.get('/', (req, res) => {
+  res.redirect('/malvin.html');
+});
+
+//====
+  app.listen(port, () => console.log(`[❄️] 𝙼𝙰𝙻𝚅𝙸𝙽 𝙼𝙳 Server listening on port http://localhost:${port}`));
   setTimeout(() => {
   connectToWA()
   }, 4000);

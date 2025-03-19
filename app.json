@@ -1,18 +1,37 @@
 {
   "name": "✦ᴍᴀʟᴠɪɴ-xᴅ✦",
   "description": "Javascript WhatsApp bot made by ✦ ᴍᴀʟᴠɪɴ ᴋɪɴɢ ✦",
-  "logo": "https://files.catbox.moe/gld2vo.jpg",
+  "logo": "https://files.catbox.moe/2prjby.jpg",
   "keywords": ["MALVIN XD"],
   "success_url": "/",
 
     "stack": "container",
   "env": {
-    "SESSION_ID": {
-      "description": "Put the session-id here.",
-      "required": true,
-      "value": ""
+      "SESSION_ID": {
+        "description": "Put your SESSION_ID here. Make sure it starts with MALVIN-XD~",
+        "value":"",
+        "required": true
+     }, 
+
+    "BOT_NAME": {
+      "description": "write here your bot name.",
+        "required": true,
+        "value": "✦『ᴍᴀʟᴠɪɴ xᴅ v3』✦"    
+         
     },  
+    "PREFIX": {
+     "description": "Bot command prefix, (e.g, . , ! @ etc",
+        "value":".",
+        "required": true
+    },
     
+    "MODE": {
+      "description": "Bot mode can be public, private, inbox or groups in small letters (e.g, public)",
+        "value":"private",
+        "required": true
+      
+      },
+      
     "MENU_IMG": {
       "description": "paste your image url if you don't have you can use this public url.",
       "required": false,
@@ -22,26 +41,14 @@
     "ALIVE_IMG": {
       "description": "paste your image url if you don't have you can use this public url.",
       "required": false,
-      "value": "https://files.catbox.moe/ktd1l4.jpg"
+      "value": "https://files.catbox.moe/ebqp72.png"
     }, 
     
     "LIVE_MSG": {
       "description": "paste your alive message hear.",
       "required": false,
-      "value": "> ✦ᴍᴀʟᴠɪɴ xᴅ✦ ɪs sᴘᴀʀᴋɪɴɢ ᴀᴄᴛɪᴠᴇ ᴀɴᴅ ᴀʟɪᴠᴇ\n\n\nᴋᴇᴇᴘ ᴜsɪɴɢ ✦ᴍᴀʟᴠɪɴ xᴅ v2✦ ғʀᴏᴍ ɴᴇxᴜs ᴛᴇᴄʜ ɪɴᴄ⚡\n\n\n*© ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ - ᴍᴅ\n\n> ɢɪᴛʜᴜʙ :* github.com/kingmalvn/MALVIN-XD⚡"
-    },
+      "value": "> ✦ᴍᴀʟᴠɪɴ xᴅ✦ ɪs sᴘᴀʀᴋɪɴɢ ᴀᴄᴛɪᴠᴇ ᴀɴᴅ ᴀʟɪᴠᴇ\n\n\nᴋᴇᴇᴘ ᴜsɪɴɢ ✦ᴍᴀʟᴠɪɴ xᴅ v3✦ ғʀᴏᴍ ɴᴇxᴜs ᴛᴇᴄʜ ɪɴᴄ⚡\n\n\n*© ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ - ᴍᴅ\n\n> ɢɪᴛʜᴜʙ :* github.com/kingmalvn/MALVIN-XD⚡"
     
-    "PREFIX": {
-      "description": "paste your bot prefix note! Don't apply null prefix.",
-      "required": false,
-      "value": "."
-    },
-    
-    "MODE": {
-      "description": "select your bot work type public-private-inbox-group.",
-      "required": false,
-      "value": "public"
-      
     },  
     
     "STICKER_NAME": {
@@ -64,9 +71,9 @@
     }, 
 
     "AUTO_REPLY": {
-      "description": "Make it true if you want automatic reply.",
-      "required": false,
-      "value": "false"
+      "description": "Bot will reply to the msgs like gm, gn, love you, hate you, hi, etc... To Enable put true and to disable put false (e.g, true)",
+        "value":"false",
+        "required": false
     }, 
 
     "AUTO_STICKER": {
@@ -96,7 +103,7 @@
     "AUTO_STATUS_MSG": {
       "description": "Type custom message on status reply",
       "required": true,
-      "value": "*🎉👀Status Seen by malvin xd v2🚀🔥*"
+      "value": "*🎉👀Status Seen by malvin xd v3🚀🔥*"
     }, 
 
     "OWNER_NAME": {
@@ -110,13 +117,6 @@
       "description": "put the owner number for bot.",
       "required": false,
       "value": "263714757857"
-
-    }, 
-
-    "BOT_NAME": {
-      "description": "Type here the bot name.",
-      "required": false,
-      "value": "✦ᴍᴀʟᴠɪɴ xᴅ v2✦"
 
       }, 
 
@@ -136,7 +136,7 @@
      "DESCRIPTION": {
       "description": "add caption for menu and other",
       "required": false,
-      "value": "*> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ✦ɴᴇxᴜs ᴛᴇᴄʜ✦ ɪɴᴄ✦*"
+      "value": "*> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ✦ᴍᴀʟᴠɪɴ ᴋɪɴɢ ᴛᴇᴄʜ ɪɴᴄ✦*"
     },
 
       "DELETE_LINKS": {
@@ -155,7 +155,9 @@
       "description": "Make it true if you want auto typing.",
       "required": false,
       "value": "false"
+      
     },
+    
       "FAKE_TYPING": {
       "description": "Make it true for fake typing.",
       "required": false,
@@ -169,9 +171,9 @@
     },
     
     "AUTO_REACT": {
-      "description": "Make it true if you want react on every message.",
-      "required": false,
-      "value": "false"
+      "description": "Bot will react to the msgs, To Enable put true and to disable put false (e.g, true)",
+        "value":"false",
+        "required": false
     },
 
     "OWNER_REACT": {

@@ -1,4 +1,4 @@
-name: malvin-xd
+name: khan-md
 services:
   - name: malvin-xd-service
     type: web
