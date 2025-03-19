@@ -64,7 +64,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
       serverMessageId: 999
     },
     externalAdReply: { 
-      title: 'Subscribe YouTube, 
+      title: 'Subscribe YouTube', 
       body: `${pushname}`, 
       mediaType: 1, 
       sourceUrl: "https://www.youtube.com/@malvintech2", 
